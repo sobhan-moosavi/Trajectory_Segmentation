@@ -1,5 +1,5 @@
 # Trajectory Segmentation Algorithm
-This repo contains the code and sample data for trajectory segmentation approach proposed in the following papers:
+This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. 
 
 
 ## References
