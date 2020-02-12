@@ -4,11 +4,11 @@ This repo contains the code and sample data for trajectory segmentation approach
 ## Implementation in Java
 Our segmentation solution is implemented in terms of three major parts as follows. 
 
-### Building the Graph
+* __Building the Graph__
 
-### Trajectory Transformation
+* __Trajectory Transformation__
 
-### Dynamic-programming based Segmentation
+* __Dynamic-programming based Segmentation__
 
 ## Python Wrapper
 We provide a wrapper on top of the jar files created for different parts of the original Java implementation. 
