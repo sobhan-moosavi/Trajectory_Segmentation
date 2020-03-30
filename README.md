@@ -1,7 +1,7 @@
 # Trajectory Segmentation Algorithm
-This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. Note that the original implementation of this algorithm is in Java, but we provide a Python Wrapper for convinience. 
+This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. 
 
-## Implementation in Java
+## Implementation in Python
 Our segmentation solution is implemented in terms of three major parts as follows. 
 
 * __Building the Graph__
@@ -10,8 +10,6 @@ Our segmentation solution is implemented in terms of three major parts as follow
 
 * __Dynamic-programming based Segmentation__
 
-## Python Wrapper
-We provide a wrapper on top of the jar files created for different parts of the original Java implementation. 
 
 ## Sample Data
 
