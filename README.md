@@ -1,5 +1,5 @@
-# Discovery of driving patterns by trajectory segmentation
-This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. Here we provide two versions of implementaiton, one in `java` and another in `python`. The `java` version is more performant. 
+# Discovery of Driving Patterns by Trajectory Segmentation
+This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. Here we provide two versions of implementaiton, one in `java` and another in `python`. The `java` version is more performant. The objective is, given a trajectory (in terms of a attributes such as latitude, longitude, speed, etc.), our segmentation algorithm finds significant driving patterns in the input trajectory.  
 
 ## Implementation in Java (Performant Version)
 This is a the original implementation of our trajectory segmentation solution that is in Java. The code incldues three important classes as follows:
