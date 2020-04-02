@@ -2,7 +2,13 @@
 This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. Here we provide two versions of implementaiton, one in `java` and another in `python`. The `java` version is more performant. The objective is, given a trajectory (in terms of a attributes such as latitude, longitude, speed, etc.), our segmentation algorithm finds significant driving patterns in the input trajectory.  
 
 ## Implementation in Java (Performant Version)
-This is a the original implementation of our trajectory segmentation solution that is in Java. The code incldues three important classes as follows:
+This is a the original implementation of our trajectory segmentation solution that is in Java. The code incldues three important modules as follows:
+
+* __CreateGraph__: This module creates a Markov graph based on an input trajectory datase (details are in described in section 3.2 of [our paper](https://dl.acm.org/doi/pdf/10.1145/3003819.3003824). As input, this module uses `graph_trips.csv` that must be placed inside the `/data` folder. One example of such a file can be find [here](https://github.com/sobhan-moosavi/Trajectory_Segmentation/blob/master/data/graph_trips.csv).
+
+* __TrajectoryTransformation__:
+
+* __DynamicProgramingSegmentation__:
 
 
 ## Implementation in Python
