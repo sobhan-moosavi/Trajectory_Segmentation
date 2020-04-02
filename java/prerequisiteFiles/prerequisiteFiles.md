@@ -1,1 +1,1 @@
-This directory will contain prerequisites and intermediate results of segmentation process. 
+This directory will contain prerequisites and/or intermediate results of segmentation process. 
