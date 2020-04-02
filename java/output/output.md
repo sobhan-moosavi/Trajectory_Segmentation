@@ -1,0 +1,1 @@
+This directory will contain segmentation output in terms of a `csv` file named as `segmentation_results.csv`. 
