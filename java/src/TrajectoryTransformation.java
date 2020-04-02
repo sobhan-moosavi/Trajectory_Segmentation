@@ -92,6 +92,10 @@ public class TrajectoryTransformation {
 			//Why getting last heading? Currently, we use heading as values between 0 to 359. So, if have no GPS coordinates for some time ...
 			//during trip, then we no longer can use 180. So, last heading gives the closest (time base closeness) available heading value to be used as an estimation
 			
+			bw.write(entry.getKey() + "," + entry.getValue().get(down).timeStep + "," + 0.0 + "," + 
+					entry.getValue().get(down).lat + "," + entry.getValue().get(down).lng + "," + entry.getValue().get(down).speed + 
+					"," + entry.getValue().get(down).acceleration + "," + entry.getValue().get(down).heading + "\n");	
+			
 			numberOfTrips ++;
 			
 			System.out.println(entry.getKey() + "\t" + entry.getValue().size());
