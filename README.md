@@ -8,7 +8,7 @@ This is a the original implementation of our trajectory segmentation solution th
 
 * __TrajectoryTransformation__: The second module transforms an input trajectory to a signal form (as described in section 3.3 of [our paper](https://dl.acm.org/doi/pdf/10.1145/3003819.3003824)). As input, this module uses `segmentation_trips.csv` that must be placed inside the `/data` folder. One example of such a file can be find [here](https://github.com/sobhan-moosavi/Trajectory_Segmentation/blob/master/data/segmentation_trips.csv).
 
-* __DynamicProgramingSegmentation__:
+* __DynamicProgramingSegmentation__: The last step perform trajectory segmentation based on the transformed version of trajectory. Details of our segmentation solution can be find in section 3.4 of [our paper](https://dl.acm.org/doi/pdf/10.1145/3003819.3003824). As input, this module uses `segmentation_trips.csv` that must be placed inside the `/data` folder. One example of such a file can be find [here](https://github.com/sobhan-moosavi/Trajectory_Segmentation/blob/master/data/segmentation_trips.csv). As output, the code generates a `csv` file named as `segmentation_results.csv` inside the `/output` directory. 
 
 
 ## Implementation in Python
@@ -21,7 +21,7 @@ Our segmentation solution is implemented in terms of three major parts as follow
 * __Dynamic-programming based Segmentation__
 
 
-## Sample Data
+## Sample Data (input and output)
 
 ## How to Run
 
