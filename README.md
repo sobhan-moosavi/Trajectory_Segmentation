@@ -1,5 +1,5 @@
-# Trajectory Segmentation Algorithm
-This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. 
+# Discovery of driving patterns by trajectory segmentation
+This repo contains the code and sample data for trajectory segmentation approach proposed in [1]. Here we provide two versions of implementaiton, one in `java` and another in `python`. The `java` version is more performant. 
 
 ## Implementation in Java (Performant Version)
 This is a the original implementation of our trajectory segmentation solution that is in Java. The code incldues three important classes as follows:
