@@ -34,7 +34,7 @@ We have provided two csv files as sample data that you can find them inside the 
 | Acceleration | This shows acceleration of a vehicle in m/s^2 (a float). |
 | HeaingChange | This shows change in bearing or heading of a vehicle with respect to the previous time stamp (in degrees). |
 
-* `segmentation_trips.csv`: this file contains 50 trajectories, and it can be used for the segmentation task. 
+* `segmentation_trips.csv`: this file contains 50 trajectories, and it can be used for the segmentation task. This file has the same attributes as `graph_trips.csv`, unless that it has two extra columns for GPS coordinates (i.e., latitude and longitude). 
 
 ## How to Run
 
