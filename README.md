@@ -38,6 +38,21 @@ We have provided two csv files as sample data that you can find them inside the 
 
 ## How to Run
 
+## Output Format
+As output, both Java and Python versions generate a csv file inside the `/output` directory that contains the following attributes:
+
+| Attribute | Description |
+| ------------- | ------------- |
+| TripId | This is an indetifier to separate different trajectories (a string). |
+| TimeStep | This is an identifier for a record of a trajectory or trip (an integer). |
+| Speed | This shows the ground velocity of a vehicle in km/h (a float). |
+| Acceleration | This shows acceleration of a vehicle in m/s^2 (a float). |
+| HeaingChange | This shows change in bearing or heading of a vehicle with respect to the previous time stamp (in degrees). |
+| Latitude | This is the latitude coordiante of a GPS record (a float). |
+| Longitude | This is the longitude coordinate of a GPS record (a float). |
+| PMD | This shows the probabilistic movement dissimilarity (pmd) value for the current record, obtained as a result of trajectory transformation process (a float) |
+| StartOfSegment | This is an indicator (0/1) that shows if the current record is start of a new segment or not; value 1 shows start of a new segment. |
+
 
 ## References
 [1] Moosavi, Sobhan, Rajiv Ramnath, and Arnab Nandi. "[Discovery of driving patterns by trajectory segmentation.](https://arxiv.org/pdf/1804.08748.pdf)" In Proceedings of the 3rd ACM SIGSPATIAL PhD Symposium, pp. 1-4. 2016.
