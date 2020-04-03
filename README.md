@@ -23,7 +23,17 @@ Our segmentation solution is implemented in terms of three major parts as follow
 
 ## Sample Data
 We have provided two csv files as sample data that you can find them inside the `/data` directory:
-* `graph_trips.csv`: this file contians 500 trajectories, and it can be used to build a Markov graph. 
+
+* `graph_trips.csv`: this file contians 500 trajectories, and it can be used to build a Markov graph. This file has the following attributes:
+
+| Attribute | Description |
+| ------------- | ------------- |
+| TripId | This is an indetifier to separate different trajectories (a string). |
+| TimeStep | This is an identifier for a record of a trajectory or trip (an integer). |
+| Speed | This shows the ground velocity of a vehicle in km/h (a float). |
+| Acceleration | This shows acceleration of a vehicle in m/s^2 (a float). |
+| HeaingChange | This shows change in bearing or heading of a vehicle with respect to the previous time stamp (in degrees). |
+
 * `segmentation_trips.csv`: this file contains 50 trajectories, and it can be used for the segmentation task. 
 
 ## How to Run
