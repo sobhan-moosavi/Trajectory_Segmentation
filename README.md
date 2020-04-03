@@ -38,6 +38,11 @@ We have provided two csv files as sample data that you can find them inside the 
 
 ## How to Run
 
+__Run Java Code__: You can use any IDE (e.g., [Eclipse](https://www.eclipse.org/downloads/packages/release/kepler/sr1/eclipse-ide-java-developers)) to compile and and run java codes. You only need to create a new java project using the provided source codes. 
+
+__Run Python Code__: You can run them using Jupyter Notebook or ... 
+
+
 ## Output Format
 As output, both Java and Python versions generate a csv file inside the `/output` directory that contains the following attributes:
 
