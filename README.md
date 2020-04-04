@@ -14,9 +14,9 @@ This is a the original implementation of our trajectory segmentation solution th
 ## Implementation in Python
 Our segmentation solution is implemented in terms of three major parts as follows. 
 
-* __Building the Graph__
+* __Building_Graph__: This module is same as the java module _CreateGraph_ (see above description). We have provided both `python` and `jupyter notebook` version of this module. 
 
-* __Trajectory Transformation__
+* __Trajectory_Transformation__: This module is same as the java module _TrajectoryTransformation_ (see above description). We have provided both `python` and `jupyter notebook` version of this module. 
 
 * __Dynamic-programming based Segmentation__
 
