@@ -16,7 +16,7 @@ import DataStructures.MeanStd;
 public class DynamicProgrammingSegmentation {
 
 	public static void main(String[] args) throws IOException {
-
+		
 		List<String> probDissData = Files.readAllLines(Paths.get("prerequisiteFiles/ProbabilisticDissimilarities.csv"));
 		BufferedWriter bw = new BufferedWriter(new FileWriter("output/segmentation_results.csv"));
 		bw.write("TripId,TimeStep,Speed,Acceleration,HeadingChange,Latitude,Longitude,PMD,StartOfSegment\n");

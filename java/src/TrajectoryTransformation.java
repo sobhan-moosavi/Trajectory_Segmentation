@@ -33,7 +33,6 @@ public class TrajectoryTransformation {
 		ComputingProbDissForAllTrips(tripData);
 		
 		// printing some stats
-		System.out.println("\ndone!");
 		System.out.println("%time that PMD was zero because of non existing states: " + 
 				Math.round(((double)zeroCounter/totalCounter)*10000.00)/100.00 + "%");		
 		System.out.println("zeroCounter: " + zeroCounter + "\ntotalCounter: " + totalCounter);
@@ -98,7 +97,7 @@ public class TrajectoryTransformation {
 			
 			numberOfTrips ++;
 			
-			System.out.println(entry.getKey() + "\t" + entry.getValue().size());
+			System.out.println("Transforming " + entry.getKey() + " of size " + entry.getValue().size());
 
 			String prevState =  (int)entry.getValue().get(down).speed + "&" +  (int)Math.round(entry.getValue().get(down).acceleration*0.25)/0.25 +
 					"&" + (int)Math.round(entry.getValue().get(down).heading*angleBinSize)/angleBinSize;
@@ -122,7 +121,7 @@ public class TrajectoryTransformation {
 			}
 		}
 		
-		System.out.println("number of trips: " + numberOfTrips);
+		System.out.println("\nNumber of processed trips: " + numberOfTrips);
 		bw.close();
 	}
 	
