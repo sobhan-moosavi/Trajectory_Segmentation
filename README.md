@@ -58,6 +58,9 @@ As output, both Java and Python versions generate a csv file inside the `/output
 | PMD | This shows the probabilistic movement dissimilarity (pmd) value for the current record, obtained as a result of trajectory transformation process (a float) |
 | StartOfSegment | This is an indicator (0/1) that shows if the current record is start of a new segment or not; value 1 shows start of a new segment. |
 
+## Evaluate Trajectory Segmenation Algorithm
+To evaluate your trajectory segmentation approach, you may use our [Dataset of Annotated Car Trajectories (DACT)](https://smoosavi.org/datasets/dact) dataset, which is a collection of 50 trajectories annotated by human subjects (for more details check out [this paper](https://dl.acm.org/doi/10.1145/3152178.3152184)). 
+
 
 ## References
 [1] Moosavi, Sobhan, Rajiv Ramnath, and Arnab Nandi. "[Discovery of driving patterns by trajectory segmentation.](https://arxiv.org/pdf/1804.08748v2.pdf)" In Proceedings of the 3rd ACM SIGSPATIAL PhD Symposium, pp. 1-4. 2016.
