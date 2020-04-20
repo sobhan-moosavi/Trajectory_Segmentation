@@ -32,7 +32,7 @@ We have provided two CSV files as sample data that you can find them inside the 
 | TimeStep | This is an identifier for a record of a trajectory or trip (an integer). |
 | Speed | This shows the ground velocity of a vehicle in km/h (a float). |
 | Acceleration | This shows acceleration of a vehicle in m/s^2 (a float). |
-| HeaingChange | This shows change in bearing or heading of a vehicle with respect to the previous timestamp (in degrees). |
+| HeadingChange | This shows change in bearing or heading of a vehicle with respect to the previous timestamp (in degrees). |
 
 * `segmentation_trips.csv`: this file contains 50 trajectories, and it can be used for the segmentation task. This file has the same attributes as `graph_trips.csv`, unless it has two extra columns for GPS coordinates (i.e., latitude and longitude). 
 
@@ -52,7 +52,7 @@ As output, both Java and Python versions generate a CSV file inside the `/output
 | TimeStep | This is an identifier for a record of a trajectory or trip (an integer). |
 | Speed | This shows the ground velocity of a vehicle in km/h (a float). |
 | Acceleration | This shows acceleration of a vehicle in m/s^2 (a float). |
-| HeaingChange | This shows change in bearing or heading of a vehicle with respect to the previous time stamp (in degrees). |
+| HeadingChange | This shows change in bearing or heading of a vehicle with respect to the previous time stamp (in degrees). |
 | Latitude | This is the latitude coordinate of a GPS record (a float). |
 | Longitude | This is the longitude coordinate of a GPS record (a float). |
 | PMD | This shows the probabilistic movement dissimilarity (pmd) value for the current record, obtained as a result of the trajectory transformation process (a float) |
