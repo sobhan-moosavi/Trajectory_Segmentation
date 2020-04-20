@@ -16,7 +16,6 @@ import DataStructures.MeanStd;
 public class DynamicProgrammingSegmentation {
 
 	public static void main(String[] args) throws IOException {
-		
 		List<String> probDissData = Files.readAllLines(Paths.get("prerequisiteFiles/ProbabilisticDissimilarities.csv"));
 		BufferedWriter bw = new BufferedWriter(new FileWriter("output/segmentation_results.csv"));
 		bw.write("TripId,TimeStep,Speed,Acceleration,HeadingChange,Latitude,Longitude,PMD,StartOfSegment\n");
@@ -28,14 +27,14 @@ public class DynamicProgrammingSegmentation {
 		int n_trips = 0;
 		
 		String crnt_trip = "";
-		List<Double> points = new ArrayList<Double>();
+		List<Float> points = new ArrayList<Float>();
 		List<String> trip_points = new ArrayList<>();
 		
 		// read probabilistic dissimilarity files line by line, separate trajectories, perform segmentation, and print out the results
 		for(int i=1; i < probDissData.size(); i++){
 			String[] parts = probDissData.get(i).split(","); /* TripId,TimeStep,ProbDissimilarity,Lat,Lng,Speed,Acceleration,Heading */
 			if(parts[0].equals(crnt_trip)){
-				points.add(Double.parseDouble(parts[2]));
+				points.add(Float.parseFloat(parts[2]));
 				trip_points.add(parts[0] + "," + parts[1] + "," + parts[5] + "," + parts[6] + 
 						"," + parts[7] + "," + parts[3] + "," + parts[4] + "," + parts[2] + ",");
 			}
@@ -48,9 +47,9 @@ public class DynamicProgrammingSegmentation {
 					n_trips += 1;
 				}
 				crnt_trip = parts[0];
-				points = new ArrayList<Double>();
+				points = new ArrayList<Float>();
 				trip_points = new ArrayList<>();
-				points.add(Double.parseDouble(parts[2]));
+				points.add(Float.parseFloat(parts[2]));
 				trip_points.add(parts[0] + "," + parts[1] + "," + parts[5] + "," + parts[6] + 
 						"," + parts[7] + "," + parts[3] + "," + parts[4] + "," + parts[2] + ",");
 			}
@@ -66,7 +65,7 @@ public class DynamicProgrammingSegmentation {
 		System.out.println("\nThe segmentation process is finished for " + n_trips + " trips!");
 	}
 	
-	public static MeanStd estimateGuassian(List<Double> input, int start, int end){
+	public static MeanStd estimateGuassian(List<Float> input, int start, int end){
 		MeanStd ms = new MeanStd();
 		ms.mean = 0;
 		ms.std = 0;
@@ -80,35 +79,35 @@ public class DynamicProgrammingSegmentation {
 		for(int i=start; i <= end ; i++)
 			ms.std += Math.pow(input.get(i) - ms.mean, 2);
 		
-		ms.std = Math.sqrt((1.0/size) * ms.std);	
+		ms.std = (float) Math.sqrt((1.0/size) * ms.std);	
 		 
 		return ms;
 	}
 	
-	public static double lnOfNormalDistribution(double x, double mean, double std){
-		double value = 0;		
+	public static float lnOfNormalDistribution(float x, float mean, float std){
+		float value = 0;		
 		//value = ln(N(x, mean, std)) where N stands for normal distribution. N(x, mean, std) = (1/std * (2PI)^0.5) * exp(- (x - mean)^2 / (2 * std^2) )
-		value = -1 * ((Math.log(std * Math.sqrt(2 * Math.PI))/Math.log(Math.E)) + (Math.pow(x-mean, 2)/(2 * Math.pow(std, 2))));	
+		value = (float) (-1 * ((Math.log(std * Math.sqrt(2 * Math.PI))/Math.log(Math.E)) + (Math.pow(x-mean, 2)/(2 * Math.pow(std, 2)))));	
 		return value;
 	}
 	
-	public static double[][] calculateDelta(List<Double> points){
+	public static float[][] calculateDelta(List<Float> points){
 		//** Calculation of Delta for all form of segments in given trajectory
 		//delta_i(n_(i-1) , n_i - 1): the formula before (3) in paper! where n_(i-1) and n_i - 1 can be any possible pairs in trajectory!
 		//Simply, here we have a window of dynamic size which scans whole trajectory! we will find the likelihood of that windows based on... 
 		//...distribution of its points. Such distribution is a normal distribution and we have the assumption of independence of nodes ...
 		//... in order to make simplification in problem
 		
-		double[][] delta = new double[points.size() - 1][points.size()];
+		float[][] delta = new float[points.size() - 1][points.size()];
 		
 		for(int i=0; i < delta.length; i++){
 			for(int j=0; j < delta[i].length; j++){
-				delta[i][j] = Double.MAX_VALUE; //some form of initialization
+				delta[i][j] = Float.MAX_VALUE; //some form of initialization
 				if((j - i + 1) >= 2){//the length of a segment should be at least 2!					
 					//get the distribution
 					MeanStd ms = estimateGuassian(points, i, j);		
 					//get the ln value based on points in this segment and their corresponding distribution
-					double value = 0;
+					float value = 0;
 					//The goal is minimizing the delta! So, when we have standard deviation = 0, this means no changes is observing in ...
 					//...probabilistic dissimilarity values in range i to j! So, no change, no std! In other words, we have a uniform distribution...
 					//...for this range! In this way, I decided to let the delta to be 0 in such situation. 
@@ -125,7 +124,7 @@ public class DynamicProgrammingSegmentation {
 		return delta;
 	}
 	
-	public static void dynamicProgramingSegmentation(List<Double> points, int Ns, double[][] delta, double[][] I, int[][] Index){		
+	public static void dynamicProgramingSegmentation(List<Float> points, int Ns, float[][] delta, float[][] I, int[][] Index){		
 		//** Finding optimal segmentation by having N_s as number of existing segments in given trajectory
 		//Here, we will find I_k(L) for all k = 1,2,...,N_s and for all L = 1,2,...,N
 		//The approach for finding these values is based on dynamic programming formula...
@@ -134,7 +133,7 @@ public class DynamicProgrammingSegmentation {
 		//initialization of I
 		for(int i=0; i < I.length; i++)
 			for(int j =0; j < I[i].length; j++)
-				I[i][j] = Double.MAX_VALUE;
+				I[i][j] = Float.MAX_VALUE;
 		
 		//In addition to minimum values, we need minimum indexes which show the best breaking points for segments		
 		//initialization of Index
@@ -159,14 +158,14 @@ public class DynamicProgrammingSegmentation {
 				//...the minimum criteria is I have a segment from 0 to 1. And the 2nd segment would be from 2! So, when k=1, the min length...
 				//... for L should be 3 in order to have at least two separate segments. 			
 				for(int L=(k*2 + 1); L < points.size(); L++){
-					double minValue = Double.MAX_VALUE;
+					float minValue = Float.MAX_VALUE;
 					int minIndex = -1;
 					//I. Why (L-1)? since I want to let the last segment be at least from L-1 to L. That is, the minimum length is 2!
 					//II. Look, here I have equality condition for L not just lower than! since L is index of upper loop and is precise. 
 					//III. Why nk_1 = k*2? look at the last line of formula in left column of page 2 of paper. we have nk_1 as starting index ...
 					//... of last segment. When have k = 1 or just want two segments, such index is at least 2! this means k*2. 
 					for(int nk_1 = k*2; nk_1 <= L-1; nk_1++){
-						double value = I[k-1][nk_1 - 1] + delta[nk_1][L];
+						float value = I[k-1][nk_1 - 1] + delta[nk_1][L];
 						if(value < minValue){
 							minValue = value;
 							minIndex = nk_1;
@@ -178,13 +177,13 @@ public class DynamicProgrammingSegmentation {
 			}
 	}
 	
-	public static double MinimumDescriptionLength(List<Double> points, int[][] Index, int Ns){
+	public static float MinimumDescriptionLength(List<Float> points, int[][] Index, int Ns){
 		//Here, the goal is to find the goodness of fit without any kind of over-fitting or a problem which have unseen data. 
 		//We use the formula (7) in paper which is written based on a well known research paper: "modeling by shortest data description, 1978"		
-		double MDL = 0;
+		float MDL = 0;
 		
 		//1. Calculation of first term
-		double mle = 0;
+		float mle = 0;
 
 		int segmentEnd   = points.size()-1;
 		int segmentBegin = -1;
@@ -206,31 +205,31 @@ public class DynamicProgrammingSegmentation {
 		//r_k = #parameters for estimated distributions + k - 1
 		//Here, such number of parameters is 2*k since we have 2 parameters (mean and std) for every single estimated pdf
 		//Also, k = Ns
-		double r_k = 2*Ns + Ns - 1;
+		float r_k = 2*Ns + Ns - 1;
 		MDL += (r_k/2) * (Math.log(points.size())/Math.log(Math.E)); //(r_k/2)*ln(N)
 		
 		return MDL;
 	}
 
-	public static void mainSegmentationProcess(List<Double> points,
+	public static void mainSegmentationProcess(List<Float> points,
 			List<String> trip_points,
 			BufferedWriter bw,
 			int max_number_of_segments) throws IOException{
 		//1. Calculation of Delta for all form of segments in given trajectory		
-		double[][] delta = calculateDelta(points);
+		float[][] delta = calculateDelta(points);
 	
 		//2. Optimization to find the best value of Ns
-		double MDL = Double.MAX_VALUE;
+		float MDL = Float.MAX_VALUE;
 		int bestNs = -1;
 		int[][] optimizaedIndex = null;
 						
 		for(int Ns = 1; Ns <= max_number_of_segments; Ns++){
 			//3. Finding optimal segmentation by having N_s as number of existing segments in given trajectory
-			double[][] I = new double[Ns][points.size()];		
+			float[][] I = new float[Ns][points.size()];		
 			//In addition to minimum values, we need minimum indexes which show the best breaking points for segments
 			int[][] Index = new int[Ns][points.size()];
 			dynamicProgramingSegmentation(points, Ns, delta, I, Index);
-			double mdl = MinimumDescriptionLength(points, Index, Ns);
+			float mdl = MinimumDescriptionLength(points, Index, Ns);
 			if(mdl < MDL){
 				MDL = mdl;
 				bestNs  = Ns;
