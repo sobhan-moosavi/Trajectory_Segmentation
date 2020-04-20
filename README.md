@@ -14,17 +14,17 @@ This is a the original implementation of our trajectory segmentation solution th
 ## Implementation in Python
 Our segmentation solution is implemented in terms of three major parts as follows. 
 
-* __Building_Graph__: This module is same as the java module _CreateGraph_ (see above description). We have provided both `python` and `jupyter notebook` version of this module. 
+* __Building_Graph__: This module is same as the java module _CreateGraph_ (see above description). We have provided both `python` and `jupyter notebook` implementations of this module. 
 
-* __Trajectory_Transformation__: This module is same as the java module _TrajectoryTransformation_ (see above description). We have provided both `python` and `jupyter notebook` version of this module. 
+* __Trajectory_Transformation__: This module is same as the java module _TrajectoryTransformation_ (see above description). We have provided both `python` and `jupyter notebook` implementations of this module. 
 
-* __Dynamic-programming based Segmentation__
+* __Dynamic-programming based Segmentation__: This module is same as the java module _DynamicProgrammingSegmentation_. We have provided both `python` and `jupyter notebook` implementations of this module. 
 
 
 ## Sample Data
 We have provided two csv files as sample data that you can find them inside the `/data` directory:
 
-* `graph_trips.csv`: this file contians 500 trajectories, and it can be used to build a Markov graph. This file has the following attributes:
+* `graph_trips.csv`: this file contians 1000 trajectories, and it can be used to build a Markov graph. This file has the following attributes:
 
 | Attribute | Description |
 | ------------- | ------------- |
@@ -40,7 +40,7 @@ We have provided two csv files as sample data that you can find them inside the 
 
 __Run Java Code__: You can use any IDE (e.g., [Eclipse](https://www.eclipse.org/downloads/packages/release/kepler/sr1/eclipse-ide-java-developers)) to compile and and run java codes. You only need to create a new java project using the provided source codes. 
 
-__Run Python Code__: You can run them using Jupyter Notebook or ... 
+__Run Python Code__: You can run python codes using [Jupyter Notebook](https://jupyter.org/) or using a [Python Interpreter](https://www.python.org/downloads/). Please note that you need very basic python libraries such as `numpy` to run the scripts. 
 
 
 ## Output Format
