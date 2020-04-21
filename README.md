@@ -40,7 +40,7 @@ We have provided two CSV files as sample data that you can find them inside the 
 
 __Run Java Code__: You can use any IDE (e.g., [Eclipse](https://www.eclipse.org/downloads/packages/release/kepler/sr1/eclipse-ide-java-developers)) to compile and run java codes. You only need to create a new java project using the provided source codes. 
 
-__Run Python Code__: You can run python codes using [Jupyter Notebook](https://jupyter.org/) or using a [Python Interpreter](https://www.python.org/downloads/). Please note that you need very basic python libraries such as `numpy` to run the scripts. 
+__Run Python Code__: You can run python codes using [Jupyter Notebook](https://jupyter.org/) or using a [Python Interpreter](https://www.python.org/downloads/). Please note that you only need the very basic python libraries such as `numpy` to run the scripts. 
 
 
 ## Output Format
